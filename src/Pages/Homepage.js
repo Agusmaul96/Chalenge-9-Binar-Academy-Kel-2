@@ -1,6 +1,7 @@
 import "./landing.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const LandingPage = () => {
+  const handleOnClick = () => history.push('./component/GameList')
   return (
     <div id="halaman1">
       <div id="navbar">
@@ -54,9 +55,9 @@ const LandingPage = () => {
           Experience new tradisional game play
         </p>
         <p>
-          <a href="game.html" class="btn btn-warning my-2">
+          <button type="button" onClick={handleOnClick} class="btn btn-warning my-2">
             PLAY
-          </a>
+          </button>
         </p>
       </section>
       <div class="story p-3">
