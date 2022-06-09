@@ -2,8 +2,8 @@ import "./landing.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 const LandingPage = () => {
   return (
-    <div class="container-sm" id="halaman1">
-      <div class="container" id="navbar">
+    <div id="halaman1">
+      <div id="navbar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-75">
           <div class="container-fluid">
             <a class="navbar-brand me-5" href="#halaman1">
@@ -34,39 +34,6 @@ const LandingPage = () => {
                 <a class="nav-link active" href="#">
                   ABOUT ME
                 </a>
-                <div class="btn-group">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {" "}
-                      Halaman
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#halaman2">
-                          About
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman3">
-                          Features
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman4">
-                          Requirements
-                        </a>
-                      </li>
-                      <li>
-                        <hr class="dropdown-divider" />
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman6">
-                          Subscribe
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </div>
               </div>
 
               <div class="navbar-nav me-4" id="tekskiri">
@@ -81,7 +48,7 @@ const LandingPage = () => {
           </div>
         </nav>
       </div>
-      <section class="col-lg-12 col-md-12 col-sm-12 mx-auto text-center container">
+      <section class="col-lg-12 col-md-12 col-sm-12 mx-auto text-center container section">
         <h1 class="fw-light">PLAY TRADITIONAL GAME</h1>
         <p class="lead" id="teksgame1">
           Experience new tradisional game play
