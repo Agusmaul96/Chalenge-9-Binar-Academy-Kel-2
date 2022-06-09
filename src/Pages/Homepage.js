@@ -1,7 +1,6 @@
-import "./landing.css";
+import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const LandingPage = () => {
-  const handleOnClick = () => history.push('./component/GameList')
+const HomePage = () => {
   return (
     <div id="halaman1">
       <div id="navbar">
@@ -55,7 +54,7 @@ const LandingPage = () => {
           Experience new tradisional game play
         </p>
         <p>
-          <button type="button" onClick={handleOnClick} class="btn btn-warning my-2">
+          <button type="button" class="btn btn-warning my-2">
             PLAY
           </button>
         </p>
@@ -76,4 +75,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HomePage;

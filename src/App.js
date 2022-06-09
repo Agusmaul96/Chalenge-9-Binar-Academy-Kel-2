@@ -1,12 +1,12 @@
 
 import "./App.css";
-import LandingPage from "./component/LandingPage";
-import GameList from "./component/GameList";
+import HomePage from "./Pages/Homepage";
+import GameList from "./Pages/GameList";
 
 function App() {
   return (
     <div>
-    <LandingPage />
+    <HomePage />
 
     <GameList />
     </div>
