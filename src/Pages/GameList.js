@@ -37,12 +37,12 @@ const GameList = () => {
           </div>
           <h1 class="listext">GAME LIST</h1>
       <div class="gamelist">
-      <div class="gameone">GAME 1</div>
-      <div class="gametwo">2</div>
-      <div class="gamethree">3</div>
-      <div class="gamefour">4</div>
-      <div class="gamefive">5</div>
-      <div class="gamesix">6</div>
+      <button class="gameone"></button>
+      <button class="gametwo">GAME 2</button>
+      <button class="gamethree">GAME 3</button>
+      <button class="gamefour">GAME 4</button>
+      <button class="gamefive">GAME 5</button>
+      <button class="gamesix">GAME 6</button>
     </div>
     </div>
   );
