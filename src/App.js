@@ -1,11 +1,14 @@
-import './App.css';
+
+import "./App.css";
+import HomePage from "./Pages/Homepage";
+import GameList from "./Pages/GameList";
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Hello World!</h1>
-      </header>
+    <div>
+    <HomePage />
+
+    <GameList />
     </div>
   );
 }
