@@ -1,13 +1,15 @@
 import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const navigate = useNavigate()
   return (
     <div>
     <div id="halaman1">
       <div id="navbar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-75">
           <div class="container-fluid">
-            <a class="navbar-brand me-5" href="#halaman1">
+            <a class="navbar-brand me-5" href="/">
               LOGO
             </a>
             <button
@@ -38,10 +40,10 @@ const HomePage = () => {
               </div>
 
               <div class="navbar-nav me-4" id="tekskiri">
-                <a class="nav-link active" href="signup.html">
+                <a class="nav-link active"  onClick={()=> navigate("signup")}>
                   SIGN UP
                 </a>
-                <a class="nav-link active" href="login.html">
+                <a class="nav-link active"  onClick={()=> navigate("login")}>
                   LOGIN
                 </a>
               </div>
@@ -55,7 +57,7 @@ const HomePage = () => {
           Experience new tradisional game play
         </p>
         <p>
-          <button type="button" class="btn btn-warning my-2">
+          <button type="button" class="btn btn-warning my-2" onClick={()=> navigate("gamelist")}>
             PLAY
           </button>
         </p>
@@ -74,7 +76,7 @@ const HomePage = () => {
       </div>
     </div>
         
-    <div class="container" id="halaman2">
+    <div id="halaman2">
       <div>
         <div class="row justify-content-center" id="conten2">
           <div class="col-lg-4 col-md-12 col-sm-12">

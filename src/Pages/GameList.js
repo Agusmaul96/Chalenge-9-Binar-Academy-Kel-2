@@ -6,7 +6,7 @@ const GameList = () => {
         <div id="navbar">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-75">
               <div class="container-fluid">
-                <a class="navbar-brand me-5" href="#halaman1">
+                <a class="navbar-brand me-5" href="/">
                   LOGO
                 </a>
                 <button
