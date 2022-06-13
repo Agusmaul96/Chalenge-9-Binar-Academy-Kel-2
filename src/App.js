@@ -9,6 +9,7 @@ import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
+import firebase from "./services/firebase";
 
 function App() {
   return (
