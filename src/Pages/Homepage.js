@@ -1,56 +1,15 @@
 import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-const HomePage = () => {
-  const navigate = useNavigate()
+import Navigation from "../components/Navigation";
+
+const Homepage = () => {
+const navigate = useNavigate()
   return (
+    <>
+    <Navigation />
     <div>
     <div id="halaman1">
-      <div id="navbar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-75">
-          <div class="container-fluid">
-            <a class="navbar-brand me-5" href="/">
-              LOGO
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#halaman1">
-                  HOME
-                </a>
-                <a class="nav-link active" href="#">
-                  WORK
-                </a>
-                <a class="nav-link active" href="#">
-                  CONTACT
-                </a>
-                <a class="nav-link active" href="#">
-                  ABOUT ME
-                </a>
-              </div>
-
-              <div class="navbar-nav me-4" id="tekskiri">
-                <a class="nav-link active"  onClick={()=> navigate("signup")}>
-                  SIGN UP
-                </a>
-                <a class="nav-link active"  onClick={()=> navigate("login")}>
-                  LOGIN
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
       <section class="col-lg-12 col-md-12 col-sm-12 mx-auto text-center container section">
         <h1 class="fw-light">PLAY TRADITIONAL GAME</h1>
         <p class="lead" id="teksgame1">
@@ -133,8 +92,8 @@ const HomePage = () => {
       </div>
     
     </div>
-  
+    </>
   );
 };
 
-export default HomePage;
+export default Homepage;
