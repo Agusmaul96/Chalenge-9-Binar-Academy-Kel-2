@@ -1,0 +1,49 @@
+.play {
+    width: 100%;
+    position: relative;
+    margin-top: 3.125rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .play h1{
+    text-align: center;
+  }
+  
+  .play .items {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .play .items .image {
+    height: 200px;
+    width: 200px;
+    border: 18px solid;
+    border-radius: 25%;
+    transition: transform 0.2s;
+  }
+  .play .items .image__paper {
+    background-color: #fff;
+    background-image: url("../Pages/assets/kertas1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: #9c835f;
+  }
+  
+  .play .items .image__scissors {
+    background-color: #fff;
+    background-image: url("../Pages/assets/gunting1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: #9c835f;
+  }
+  
+  .play .items .image__rock {
+    background-color: #fff;
+    background-image: url("../Pages/assets/batu1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: #9c835f;
+  }
+  
+  
