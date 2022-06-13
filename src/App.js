@@ -1,10 +1,13 @@
-
 import "./App.css";
-import LandingPage from "./component/LandingPage";
+import { useState } from "react";
+// import LandingPage from "./component/LandingPage";
+import ProfilePage from "./component/ProfilePage";
 
 function App() {
   return (
-    <LandingPage />
+    <div className="App">
+      <ProfilePage />
+    </div>
   );
 }
 
