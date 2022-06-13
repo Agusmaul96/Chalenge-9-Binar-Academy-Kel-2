@@ -1,0 +1,21 @@
+.logo {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.menu {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a:-webkit-any-link {
+    color: orange;
+    cursor: pointer;
+}
+
+a:-webkit-any-link:hover {
+    color: rgb(122, 81, 4);
+    transition: 1s;
+}
+
+

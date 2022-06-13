@@ -1,95 +1,24 @@
-import "./landing.css";
+import "./homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const LandingPage = () => {
-  return (
-    <div class="container-sm" id="halaman1">
-      <div class="container" id="navbar">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark opacity-75">
-          <div class="container-fluid">
-            <a class="navbar-brand me-5" href="#halaman1">
-              LOGO
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="#halaman1">
-                  HOME
-                </a>
-                <a class="nav-link active" href="#">
-                  WORK
-                </a>
-                <a class="nav-link active" href="#">
-                  CONTACT
-                </a>
-                <a class="nav-link active" href="#">
-                  ABOUT ME
-                </a>
-                <div class="btn-group">
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {" "}
-                      Halaman
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarDropdown">
-                      <li>
-                        <a class="dropdown-item" href="#halaman2">
-                          About
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman3">
-                          Features
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman4">
-                          Requirements
-                        </a>
-                      </li>
-                      <li>
-                        <hr class="dropdown-divider" />
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#halaman6">
-                          Subscribe
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                </div>
-              </div>
+import { useNavigate } from "react-router-dom";
+import Navigation from "../components/Navigation";
 
-              <div class="navbar-nav me-4" id="tekskiri">
-                <a class="nav-link active" href="signup.html">
-                  SIGN UP
-                </a>
-                <a class="nav-link active" href="login.html">
-                  LOGIN
-                </a>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <section class="col-lg-12 col-md-12 col-sm-12 mx-auto text-center container">
+const Homepage = () => {
+const navigate = useNavigate()
+  return (
+    <>
+    <Navigation />
+    <div>
+    <div id="halaman1">
+      <section class="col-lg-12 col-md-12 col-sm-12 mx-auto text-center container section">
         <h1 class="fw-light">PLAY TRADITIONAL GAME</h1>
         <p class="lead" id="teksgame1">
           Experience new tradisional game play
         </p>
         <p>
-          <a href="game.html" class="btn btn-warning my-2">
+          <button type="button" class="btn btn-warning my-2" onClick={()=> navigate("gamelist")}>
             PLAY
-          </a>
+          </button>
         </p>
       </section>
       <div class="story p-3">
@@ -105,7 +34,66 @@ const LandingPage = () => {
         </svg>
       </div>
     </div>
+        
+    <div id="halaman2">
+      <div>
+        <div class="row justify-content-center" id="conten2">
+          <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="kirigame">
+              <br />
+              <h4>what's so special ?</h4>
+              <br />
+              <h1>THE GAMES</h1>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+            <br />
+            <br />
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="assets/rockpaperstrategy-1600.jpg" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/rockpaperstrategy-1600.jpg" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="assets/rockpaperstrategy-1600.jpg" class="d-block w-100" alt="..." />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="halaman3">
+      llll
+    </div>
+    <div id="halaman4">llll
+    </div>
+  
+    <div id="halaman5" >   lll
+    </div>
+    <div id="halaman6">llll
+      </div>
+    
+    </div>
+    </>
   );
 };
 
-export default LandingPage;
+export default Homepage;
