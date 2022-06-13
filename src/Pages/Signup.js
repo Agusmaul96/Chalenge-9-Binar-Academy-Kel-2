@@ -1,7 +1,11 @@
 import "./login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Navigation from "../components/Navigation";
+
 const Signup = () => {
   return (
+    <>
+    <Navigation/>
     <div>
     <div class="row">
       <div class="col-lg-12 col-sm-12 topText">
@@ -54,6 +58,7 @@ const Signup = () => {
       </div>
     </div>
   </div>
+  </>
   );
 };
 
