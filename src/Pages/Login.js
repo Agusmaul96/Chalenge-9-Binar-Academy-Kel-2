@@ -1,8 +1,33 @@
 import "./login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
+import React,{useState} from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate=useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/')
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+      });
+  };
   return (
     <>
     <Navigation />
@@ -19,13 +44,13 @@ const Login = () => {
           <div class="card p-5">
             <h1 class="mb-5">Login</h1>
 
-            <form action="/login/auth" method="POST" class="row g-3">          
+            <form onSubmit={handleSubmit} class="row g-3">          
 
               <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-4 col-form-label"> Email </label>
 
                 <div class="col-sm-8">
-                  <input type="email" name="uEmail" class="form-control" placeholder="example@gmail.com" />
+                  <input type="email" name="uEmail" class="form-control" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
               </div>
 
@@ -33,7 +58,7 @@ const Login = () => {
                 <label for="inputPassword" class="col-sm-4 col-form-label"> Password </label>
 
                 <div class="col-sm-8">
-                  <input type="password" name="uPassword" class="form-control" placeholder="12345678" />
+                  <input type="password" name="uPassword" class="form-control" placeholder="12345678" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </div>
               </div>
 
