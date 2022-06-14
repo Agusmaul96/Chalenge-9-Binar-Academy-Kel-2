@@ -62,10 +62,12 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<ProfilePage />} />
+          {/* path game jangan diubah */}
           <Route path="startgame" element={<Play setplayerChoice={setplayerChoice} />} />
-          <Route path="gameplay" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
+          <Route path="game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
           <Route path="admin" element={<><Navigation/><AdminDashboard data={playerData} onDelete={onDelete}/></>}/>
           <Route path="edit" element={ <EditForm/> } />
+
         </Routes>
         </UserProvider>
       </Router>
