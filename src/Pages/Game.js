@@ -45,8 +45,8 @@ function Game({ score, playerChoice, setScore }) {
     const timer =
       counter > 0
         ? setInterval(() => {
-            setCounter(counter - 1);
-          }, 1000)
+          setCounter(counter - 1);
+        }, 1000)
         : getResult();
 
     return () => {
@@ -55,7 +55,7 @@ function Game({ score, playerChoice, setScore }) {
   }, [counter, com]);
 
   return (
-    <div class="body">
+    <>
       <Header score={score} />
       <div className="app__container">
         <div className="game">
@@ -95,7 +95,7 @@ function Game({ score, playerChoice, setScore }) {
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
