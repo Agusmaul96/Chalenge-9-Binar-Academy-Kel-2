@@ -12,7 +12,7 @@ function Play({ setplayerChoice, score }) {
   };
 
   return (
-    <div class="body">
+    <>
       <Header score={score} />
       <div className="app__container">
         <div className="play">
@@ -31,7 +31,8 @@ function Play({ setplayerChoice, score }) {
         </div>
       </div>
       <Footer />
-    </div>
+
+    </>
   );
 }
 
