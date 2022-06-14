@@ -1,3 +1,11 @@
+.gamepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 10%;
+}
 .listext {
   font-family: Lucida Sans;
   color: black;
@@ -16,8 +24,8 @@
   height: 100vh;
 }
 .gameone {
-  background-image: url(assets/logorockpaper.png);
-  height: 150px;
+  background-image: url(../assets/logorockpaper.png);
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;
@@ -31,7 +39,7 @@
 
 .gametwo {
   background-color: grey;
-  height: 150px;
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;
@@ -42,7 +50,7 @@
 
 .gamethree {
   background-color: grey;
-  height: 150px;
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;
@@ -53,7 +61,7 @@
 
 .gamefour {
   background-color: grey;
-  height: 150px;
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;
@@ -64,7 +72,7 @@
 
 .gamefive {
   background-color: grey;
-  height: 150px;
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;
@@ -75,7 +83,7 @@
 
 .gamesix {
   background-color: grey;
-  height: 150px;
+  height: 20%;
   width: 150px;
   margin: 20px;
   display: flex;

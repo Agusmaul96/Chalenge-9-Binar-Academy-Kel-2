@@ -1,5 +1,5 @@
 #halaman1 {
-  background-image: url(assets/main-bg.jpg);
+  background-image: url(../assets/main-bg.jpg);
   background-size: cover;
   background-position: center;
   height: 750px;
@@ -13,7 +13,7 @@
   width: 100%;
 }
 section {
-  margin-top: 18%;
+  margin-top: 20%;
 }
 .navbar-brand {
   margin-left: 40px;
@@ -52,7 +52,7 @@ section {
 }
 /* halaman2 */
 #halaman2 {
-  background-image: url(assets/the-games-bg.jpg);
+  background-image: url(../assets/the-games-bg.jpg);
   background-size: cover;
   background-position: center;
   height: 800px;
@@ -76,7 +76,7 @@ section {
 
 /* halaman 3 */
 #halaman3 {
-  background-image: url(assets/features.jpg);
+  background-image: url(../assets/features.jpg);
   background-size: cover;
   background-position: center;
   height: 750px;
@@ -108,7 +108,7 @@ p {
 
 /* halaman 4 */
 #halaman4 {
-  background-image: url(assets/the-games-bg.jpg);
+  background-image: url(../assets/the-games-bg.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -171,7 +171,7 @@ th {
 }
 
 #halaman5 {
-  background-image: url(assets/the-games-bg.jpg);
+  background-image: url(../assets/the-games-bg.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -250,7 +250,7 @@ th {
 
 /* Halaman 6 */
 #halaman6 {
-  background-image: url(assets/the-games-bg2.jpg);
+  background-image: url(../assets/the-games-bg2.jpg);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -311,7 +311,7 @@ footer {
 
 /* sign up */
 #signup {
-  background-image: url(assets/the-games-bg.jpg);
+  background-image: url(../assets/the-games-bg.jpg);
   background-size: cover;
   background-position: center;
   width: 100%;
