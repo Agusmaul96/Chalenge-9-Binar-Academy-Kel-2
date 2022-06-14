@@ -16,6 +16,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import { getDatabase, ref, child, get, remove } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
+import firebase from "./services/firebase";
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
