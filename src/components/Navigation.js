@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavbarBrand, NavItem } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navigation.css";
+import React,{useContext} from "react";
+import {UserContext} from "../contexts/userContext"
 
 function Navigation() {
+  const {currentUser}=useContext(UserContext)
   return (
     <div class="">
       <Navbar color="dark" expand="md" fixed="top">
@@ -29,7 +32,14 @@ function Navigation() {
           </NavItem>
         </Nav>
         <Nav>
-          <NavItem className="midleware">
+          {currentUser?(
+            <NavItem className="midleware">
+            <Link style={{ textDecoration: "none" }} className="mx-2" to="/logout">
+              Logout
+            </Link>
+          </NavItem>
+          ):(
+            <NavItem className="midleware">
             <Link style={{ textDecoration: "none" }} className="mx-2" to="/signup">
               Signup
             </Link>
@@ -37,6 +47,7 @@ function Navigation() {
               Login
             </Link>
           </NavItem>
+          )}
         </Nav>
       </Navbar>
     </div>

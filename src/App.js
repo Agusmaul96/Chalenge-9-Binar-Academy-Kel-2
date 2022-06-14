@@ -16,6 +16,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import { getDatabase, ref, child, get, remove} from "firebase/database"
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
+import { UserProvider } from "./contexts/userContext";
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
@@ -48,6 +49,7 @@ function App() {
   return (
     <>
       <Router>
+        <UserProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -65,6 +67,7 @@ function App() {
           <Route path="admin" element={<><Navigation/><AdminDashboard data={playerData} onDelete={onDelete}/></>}/>
           <Route path="edit" element={ <EditForm/> } />
         </Routes>
+        </UserProvider>
       </Router>
     </>
   );
