@@ -1,0 +1,17 @@
+
+.app__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #9c835f;
+  font-family: sans-serif;
+}
+
+.footer {
+    width: 100vw;
+    color: black;
+    text-align: center;
+    margin-top: 6.5rem;
+  }
+  
+  

@@ -1,4 +1,4 @@
-import "./homepage.css";
+import "./style/homepage.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
 

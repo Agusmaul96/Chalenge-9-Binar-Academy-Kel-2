@@ -1,1 +1,3 @@
-tess
+npm install bootstrap
+npm install firebase 
+npm install react-router-dom
