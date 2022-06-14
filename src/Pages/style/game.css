@@ -1,8 +1,9 @@
-.body {
+.app__container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  background-color: #9c835f;
+  font-family: sans-serif;
 }
 .game {
   display: flex;
