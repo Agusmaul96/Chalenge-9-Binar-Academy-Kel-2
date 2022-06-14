@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./App.css";
 import Home from "./Pages/Home";
 import Work from "./Pages/Work";
@@ -12,10 +12,39 @@ import ProfilePage from "./Pages/ProfilePage";
 import Play from "./Pages/Play";
 import Game from "./Pages/Game";
 import firebase from "./services/firebase";
+import AdminDashboard from "./Pages/AdminDashboard";
+import { getDatabase, ref, child, get, remove} from "firebase/database"
+import Navigation from "./components/Navigation";
+import EditForm from "./Pages/EditForm";
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
   const [score, setScore] = useState(0);
+
+  const [playerData, setPlayerData] = useState([]);
+  const [del, setDel] = useState(false);
+
+  useEffect(() => {
+    fetchUser();
+  }, [del]);
+
+  const fetchUser = () => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, "users"))
+      .then((snapshot) => {
+        setPlayerData(snapshot.val());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const onDelete = (uuid) => {
+    const dbRef = ref(getDatabase());
+    remove(child(dbRef, `users/${uuid}`));
+    setDel(!del);
+  };
+
   return (
     <>
       <Router>
@@ -34,6 +63,9 @@ function App() {
           {/* path game jangan diubah */}
           <Route path="startgame" element={<Play setplayerChoice={setplayerChoice} />} />
           <Route path="game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
+          <Route path="admin" element={<><Navigation/><AdminDashboard data={playerData} onDelete={onDelete}/></>}/>
+          <Route path="edit" element={ <EditForm/> } />
+
         </Routes>
       </Router>
     </>
