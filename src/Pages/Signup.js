@@ -14,21 +14,17 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password);
-    writeUserData(email, password, username);
-    navigate("/login");
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential)=>{
+      const userId = userCredential.user.uid
+      writeUserData(email, password, username,userId);
+      navigate("/login");
+    })
+
   };
-  const randId = () => {
-    let result = "";
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const charactersLength = characters.length;
-    for (let i = 0; i < 10; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
-  function writeUserData(email, password, username) {
-    const userId = randId();
+
+  function writeUserData(email, password, username,userId) {
+ 
     const db = getDatabase();
     set(ref(db, "users/" + userId), {
       email: email,
