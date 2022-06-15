@@ -6,6 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import {UserContext} from "../contexts/userContext"
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +40,9 @@ const Login = () => {
           <div class="card p-5">
             <h1 class="mb-5">Login</h1>
 
+
             <form onSubmit={handleSubmit} class="row g-3">
+
               <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-4 col-form-label">
                   {" "}
@@ -47,7 +50,9 @@ const Login = () => {
                 </label>
 
                 <div class="col-sm-8">
+
                   <input type="email" name="uEmail" class="form-control" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+
                 </div>
               </div>
 
@@ -58,6 +63,7 @@ const Login = () => {
                 </label>
 
                 <div class="col-sm-8">
+
                   <input type="password" name="uPassword" class="form-control" placeholder="12345678" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
               </div>

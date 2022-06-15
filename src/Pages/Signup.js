@@ -1,7 +1,9 @@
 import "./style/login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
+
 import React, { useState } from "react";
+
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +26,6 @@ const Signup = () => {
   };
 
   function writeUserData(email, password, username,userId) {
- 
     const db = getDatabase();
     set(ref(db, "users/" + userId), {
       email: email,
@@ -33,6 +34,7 @@ const Signup = () => {
     });
   }
   return (
+
     <div class="body">
       <Navigation />
       <div class="row">
@@ -80,6 +82,7 @@ const Signup = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

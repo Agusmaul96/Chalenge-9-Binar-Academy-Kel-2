@@ -10,7 +10,7 @@ const GameList = () => {
       <div class="gamepage">
         <h1 class="listext">GAME LIST</h1>
         <div class="gamelist">
-          <button class="gameone" onClick={() => navigate("gameplay")}></button>
+          <button class="gameone" onClick={() => navigate("game")}></button>
           <button class="gametwo">GAME 2</button>
           <button class="gamethree">GAME 3</button>
           <button class="gamefour">GAME 4</button>

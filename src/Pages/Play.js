@@ -31,7 +31,6 @@ function Play({ setplayerChoice, score }) {
         </div>
       </div>
       <Footer />
-
     </>
   );
 }

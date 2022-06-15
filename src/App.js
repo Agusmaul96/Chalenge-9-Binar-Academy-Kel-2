@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Home from "./Pages/Home";
 import Work from "./Pages/Work";
@@ -13,7 +13,7 @@ import Play from "./Pages/Play";
 import Game from "./Pages/Game";
 import firebase from "./services/firebase";
 import AdminDashboard from "./Pages/AdminDashboard";
-import { getDatabase, ref, child, get, remove} from "firebase/database"
+import { getDatabase, ref, child, get, remove } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
 import { UserProvider } from "./contexts/userContext";
@@ -58,16 +58,22 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="about" element={<About />} />
           <Route path="gamelist" element={<GameList />} />
-          <Route path="gamelist/gameplay" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
+          <Route path="gamelist/game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<ProfilePage />} />
-          {/* path game jangan diubah */}
           <Route path="startgame" element={<Play setplayerChoice={setplayerChoice} />} />
           <Route path="game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
-          <Route path="admin" element={<><Navigation/><AdminDashboard data={playerData} onDelete={onDelete}/></>}/>
-          <Route path="edit" element={ <EditForm/> } />
-
+          <Route
+            path="admin"
+            element={
+              <>
+                <Navigation />
+                <AdminDashboard data={playerData} onDelete={onDelete} />
+              </>
+            }
+          />
+          <Route path="edit" element={<EditForm />} />
         </Routes>
         </UserProvider>
       </Router>
