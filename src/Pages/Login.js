@@ -1,8 +1,7 @@
 import "./style/login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
-
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
@@ -10,12 +9,9 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/gamelist");
-
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -23,12 +19,13 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         // ...
+        navigate("/gamelist");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode);
-        console.log(errorMessage);
+        alert(errorMessage);
         // ..
       });
   };
