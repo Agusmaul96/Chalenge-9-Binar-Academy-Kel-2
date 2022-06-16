@@ -4,13 +4,11 @@ import Navigation from "../components/Navigation";
 import React, { useState,useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import {UserContext} from "../contexts/userContext"
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setCurrentUser}=useContext(UserContext);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +18,6 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
-        setCurrentUser(user)
         // ...
         navigate("/gamelist");
       })
@@ -28,7 +25,7 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode);
-        console.log(errorMessage);
+        alert(errorMessage);
         // ..
       });
   };

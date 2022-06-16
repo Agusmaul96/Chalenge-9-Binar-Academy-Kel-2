@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./navigation.css";
 import React,{useContext} from "react";
 import {UserContext} from "../contexts/userContext"
+import {signOutUser} from "../services/firebase"
 
 function Navigation() {
   const {currentUser}=useContext(UserContext)
@@ -34,7 +35,10 @@ function Navigation() {
         <Nav>
           {currentUser?(
             <NavItem className="midleware">
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/logout">
+            <Link style={{ textDecoration: "none" }} className="mx-2" to="/profile">
+            {currentUser.displayName}
+            </Link>
+            <Link style={{ textDecoration: "none" }} className="mx-2" to ="/" onClick={signOutUser}>
               Logout
             </Link>
           </NavItem>

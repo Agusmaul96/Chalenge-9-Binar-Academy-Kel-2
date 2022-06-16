@@ -4,7 +4,7 @@ import Navigation from "../components/Navigation";
 
 import React, { useState } from "react";
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,8 @@ const Signup = () => {
     .then((userCredential)=>{
       const userId = userCredential.user.uid
       writeUserData(email, password, username,userId);
-      navigate("/login");
+      updateProfile(userCredential.user, {displayName: username})
+      alert("Registrasi berhasil...")
     })
 
   };
