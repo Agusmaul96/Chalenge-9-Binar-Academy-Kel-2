@@ -22,6 +22,7 @@ const Signup = () => {
       writeUserData(email, password, username,userId);
       updateProfile(userCredential.user, {displayName: username})
       alert("Registrasi berhasil...")
+      navigate("/login")
     })
 
   };
