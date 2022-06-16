@@ -1,28 +1,28 @@
 import "./style/login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
-
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import {UserContext} from "../contexts/userContext"
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const {setCurrentUser}=useContext(UserContext);
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/gamelist");
-
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
         console.log(user);
+        setCurrentUser(user)
         // ...
+        navigate("/gamelist");
       })
       .catch((error) => {
         const errorCode = error.code;
