@@ -17,6 +17,8 @@ import { getDatabase, ref, child, get, remove } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
 import { UserProvider } from "./contexts/userContext";
+import IsUser from "./middlewares/IsUser"
+import IsAdmin from "./middlewares/IsAdmin"
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
@@ -61,16 +63,22 @@ function App() {
           <Route path="gamelist/game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={
+            <IsUser>
+              <ProfilePage />
+            </IsUser>
+          } />
           <Route path="startgame" element={<Play setplayerChoice={setplayerChoice} />} />
           <Route path="game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
           <Route
             path="admin"
             element={
+              <IsAdmin>
               <>
                 <Navigation />
                 <AdminDashboard data={playerData} onDelete={onDelete} />
               </>
+              </IsAdmin>
             }
           />
           <Route path="edit" element={<EditForm />} />
