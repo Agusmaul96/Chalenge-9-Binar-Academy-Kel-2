@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     fetchUser();
-  }, [del]);
+  }, [playerData]);
 
   const fetchUser = () => {
     const dbRef = ref(getDatabase());
