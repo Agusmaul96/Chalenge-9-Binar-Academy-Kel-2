@@ -16,17 +16,16 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential)=>{
-      const userId = userCredential.user.uid
-      writeUserData(email, password, username,userId);
-      updateProfile(userCredential.user, {displayName: username})
-      alert("Registrasi berhasil...")
-    })
-
+    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      const userId = userCredential.user.uid;
+      writeUserData(email, password, username, userId);
+      updateProfile(userCredential.user, { displayName: username });
+      alert("Registrasi berhasil...");
+      navigate("/login");
+    });
   };
 
-  function writeUserData(email, password, username,userId) {
+  function writeUserData(email, password, username, userId) {
     const db = getDatabase();
     set(ref(db, "users/" + userId), {
       email: email,
@@ -35,7 +34,6 @@ const Signup = () => {
     });
   }
   return (
-
     <div class="body">
       <Navigation />
       <div class="row">
@@ -83,7 +81,6 @@ const Signup = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
