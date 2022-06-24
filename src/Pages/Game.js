@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./style/game.css";
-import Footer from "./Footer";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+
 
 function Game({ score, playerChoice, setScore }) {
   const [com, setCom] = useState("");
@@ -94,7 +94,6 @@ function Game({ score, playerChoice, setScore }) {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

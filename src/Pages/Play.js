@@ -1,10 +1,8 @@
 import React from "react";
 import "./style/game.css";
-import Footer from "./Footer";
 import Header from "./Header";
 import { Link } from "react-router-dom";
-// import Game from './Game';
-// import { RootContext } from '../App.js'
+
 
 function Play({ setplayerChoice, score }) {
   const setChoice = (e) => {
@@ -30,7 +28,6 @@ function Play({ setplayerChoice, score }) {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
