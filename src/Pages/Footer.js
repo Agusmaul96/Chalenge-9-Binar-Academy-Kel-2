@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
 import './style/footer.css';
 
-function Footer() {
-
+function Footer(props) {
+    const { currentUser } = useContext(UserContext);
     return (
         <>
             <div className="app__container">
                 <div className="footer">
-                    <div> Challenge by
-                        <h5>FSW-19 Group 2</h5>
+                    <div className="button-score"> <button
+                        type="submit"
+                        className="btn btn-warning"
+                        onClick={() => props.handleSubmit(currentUser.uid)}>
+                        save score
+                    </button>
                     </div>
                 </div>
             </div>
