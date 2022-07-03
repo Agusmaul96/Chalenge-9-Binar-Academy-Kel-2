@@ -1,7 +1,7 @@
 .body {
-  background-color: #9c835f;
+  background-image: url("../assets/asset_lp/RPS_Hero_Bckgr.jpg");
   height: 100vh;
-  margin-top: 60px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-content: center;
