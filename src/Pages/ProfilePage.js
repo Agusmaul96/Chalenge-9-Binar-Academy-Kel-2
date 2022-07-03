@@ -2,7 +2,7 @@ import React, { useState,useEffect,useContext } from "react";
 import "./style/profile.css";
 import { getDatabase, ref, child, get} from "firebase/database";
 import {UserContext} from "../contexts/userContext"
-import 'bootstrap-icons/font/bootstrap-icons.css';
+// import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function ProfilePage() {
   const {currentUser}= useContext(UserContext)
