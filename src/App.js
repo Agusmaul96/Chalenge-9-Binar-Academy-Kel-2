@@ -11,14 +11,17 @@ import About from "./Pages/About";
 import ProfilePage from "./Pages/ProfilePage";
 import Play from "./Pages/Play";
 import Game from "./Pages/Game";
+import Header from "./Pages/Header";
 import firebase from "./services/firebase";
 import AdminDashboard from "./Pages/AdminDashboard";
-import { getDatabase, ref, child, get, remove } from "firebase/database";
+import { getDatabase, ref, child, get, remove, update } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
 import { UserProvider } from "./contexts/userContext";
+
 import IsUser from "./middlewares/IsUser";
 import IsAdmin from "./middlewares/IsAdmin";
+import Footer from "./Pages/Footer";
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
@@ -48,6 +51,24 @@ function App() {
     setDel(!del);
   };
 
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    get(child(dbRef, "score"))
+      .then((snapshot) => {
+        setScore(snapshot.val());
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const HandleSubmit = (uuid) => {
+    const dbRef = ref(getDatabase());
+    update(child(dbRef, `users/${uuid}`), {
+      total_score: score,
+    });
+  };
+
   return (
     <>
       <Router>
@@ -60,7 +81,16 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="about" element={<About />} />
             <Route path="gamelist" element={<GameList />} />
-            <Route path="gamelist/game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
+
+            <Route
+              path="gamelist/game"
+              element={
+                <>
+                  <Game playerChoice={playerChoice} score={score} setScore={setScore} />
+                  <Footer handleSubmit={HandleSubmit} />
+                </>
+              }
+            />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
             <Route
@@ -71,14 +101,32 @@ function App() {
                 </IsUser>
               }
             />
-            <Route path="startgame" element={<Play setplayerChoice={setplayerChoice} />} />
-            <Route path="game" element={<Game playerChoice={playerChoice} score={score} setScore={setScore} />} />
+            <Route
+              path="startgame"
+              element={
+                <>
+                  <Play setplayerChoice={setplayerChoice} score={score} setScore={setScore} />
+                  <Footer handleSubmit={HandleSubmit} />
+                </>
+              }
+            />
+            <Route
+              path="game"
+              element={
+                <>
+                  <Game playerChoice={playerChoice} score={score} setScore={setScore} />
+                  <Footer handleSubmit={HandleSubmit} />
+                </>
+              }
+            />
+
             <Route
               path="admin"
               element={
                 <IsAdmin>
                   <>
                     <Navigation />
+
                     <AdminDashboard data={playerData} onDelete={onDelete} />
                   </>
                 </IsAdmin>
