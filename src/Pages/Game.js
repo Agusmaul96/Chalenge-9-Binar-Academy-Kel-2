@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./style/game.css";
+import style from "./style/game.css";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 
-
-function Game({ score, playerChoice, setScore }) {
+const Game = ({ score, playerChoice, setScore }) => {
   const [com, setCom] = useState("");
   const [playerWin, setplayerWin] = useState("");
   const [counter, setCounter] = useState(3);
@@ -45,8 +44,8 @@ function Game({ score, playerChoice, setScore }) {
     const timer =
       counter > 0
         ? setInterval(() => {
-          setCounter(counter - 1);
-        }, 1000)
+            setCounter(counter - 1);
+          }, 1000)
         : getResult();
 
     return () => {
@@ -61,28 +60,46 @@ function Game({ score, playerChoice, setScore }) {
         <div className="game">
           <div className="game__player">
             <span className="p__sansserif">you picked</span>
-            <div className={`image image__${playerChoice} ${playerWin == "win" ? `image image__${playerChoice}__winner` : ""}`}></div>
+            <div
+              className={`image image__${playerChoice} ${
+                playerWin === "win"
+                  ? `image image__${playerChoice}__winner`
+                  : ""
+              }`}
+            ></div>
           </div>
-          {playerWin == "win" && (
+          {playerWin === "win" && (
             <div className="game__play">
               <span className="p__sansserif">you win</span>
-              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
+              <Link
+                to="/game-list/game"
+                className="play-again"
+                onClick={() => setCom()}
+              >
                 Play Again
               </Link>
             </div>
           )}
-          {playerWin == "lose" && (
+          {playerWin === "lose" && (
             <div className="game__play">
               <span className="p__sansserif">you lose</span>
-              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
+              <Link
+                to="/game-list/game"
+                className="play-again"
+                onClick={() => setCom()}
+              >
                 Play Again
               </Link>
             </div>
           )}
-          {playerWin == "draw" && (
+          {playerWin === "draw" && (
             <div className="game__play">
               <span className="p__sansserif">draw</span>
-              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
+              <Link
+                to="/game-list/game"
+                className="play-again"
+                onClick={() => setCom()}
+              >
                 Play Again
               </Link>
             </div>
@@ -90,12 +107,20 @@ function Game({ score, playerChoice, setScore }) {
 
           <div className="game__com">
             <span className="p__sansserif">the com picked</span>
-            {counter == 0 ? <div className={`image image__${com} ${playerWin == "lose" ? `image image__${com}__winner` : ""}`}></div> : <div className="counter">{counter}</div>}
+            {counter === 0 ? (
+              <div
+                className={`image image__${com} ${
+                  playerWin === "lose" ? `image image__${com}__winner` : ""
+                }`}
+              ></div>
+            ) : (
+              <div className="counter">{counter}</div>
+            )}
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default Game;
