@@ -18,17 +18,25 @@ import { getDatabase, ref, child, get, remove, update } from "firebase/database"
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
 import { UserProvider } from "./contexts/userContext";
+<<<<<<< HEAD
 
 import IsUser from "./middlewares/IsUser";
 import IsAdmin from "./middlewares/IsAdmin";
 import Footer from "./Pages/Footer";
 
+=======
+import IsUser from "./middlewares/IsUser"
+import IsAdmin from "./middlewares/IsAdmin"
+import Footer from "./Pages/Footer";
+
+>>>>>>> 90627263499330bdc4fa644cd1c40d721a605d97
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
   const [score, setScore] = useState(0);
 
   const [playerData, setPlayerData] = useState([]);
   const [del, setDel] = useState(false);
+
 
   useEffect(() => {
     fetchUser();
@@ -60,14 +68,16 @@ function App() {
       .catch((error) => {
         console.error(error);
       });
+
   }, []);
+
 
   const HandleSubmit = (uuid) => {
     const dbRef = ref(getDatabase());
     update(child(dbRef, `users/${uuid}`), {
-      total_score: score,
+      total_score: score
     });
-  };
+  }
 
   return (
     <>
@@ -109,7 +119,7 @@ function App() {
                   <Footer handleSubmit={HandleSubmit} />
                 </>
               }
-            />
+            />         
             <Route
               path="game"
               element={
@@ -117,9 +127,13 @@ function App() {
                   <Game playerChoice={playerChoice} score={score} setScore={setScore} />
                   <Footer handleSubmit={HandleSubmit} />
                 </>
+<<<<<<< HEAD
               }
             />
 
+=======
+              } />
+>>>>>>> 90627263499330bdc4fa644cd1c40d721a605d97
             <Route
               path="admin"
               element={
