@@ -52,3 +52,11 @@ h4 {
   font-weight: 700;
   font-size: 1.2 rem;
 }
+
+.head{
+  display: inline-flex;
+}
+.side-head{
+  padding-left: 30px;
+  padding-top: 50px;
+}

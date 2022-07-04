@@ -2,55 +2,49 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavbarBrand, NavItem } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navigation.css";
-import React,{useContext} from "react";
-import {UserContext} from "../contexts/userContext"
-import {signOutUser} from "../services/firebase"
+import React, { useContext } from "react";
+import { UserContext } from "../contexts/userContext";
+import { signOutUser } from "../services/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
-  const {currentUser}=useContext(UserContext)
+  const navigate = useNavigate();
+  const { currentUser } = useContext(UserContext);
   return (
-    <div class="">
-      <Navbar color="dark" expand="md" fixed="top">
-        <NavbarBrand className="logo">
-          <Link style={{ textDecoration: "none" }} to="/">
-            LOGO
-          </Link>
+    <div className="">
+      <Navbar className="navbar" expand="md" fixed="top">
+        <NavbarBrand className="logo" onClick={() => navigate("/")}>
+          <Link to="/"></Link>
         </NavbarBrand>
         <Nav>
           <NavItem className="menu">
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/home">
+            <Link className="mx-2" to="/">
               Home
             </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/work">
-              Work
-            </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/contact">
-              Contact
-            </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/about">
-              About
+            <Link className="mx-2" to="/game-list">
+              Game List
             </Link>
           </NavItem>
         </Nav>
         <Nav>
-          {currentUser?(
+          {currentUser ? (
             <NavItem className="midleware">
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/profile">
-            {currentUser.displayName}
-            </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to ="/" onClick={signOutUser}>
-              Logout
-            </Link>
-          </NavItem>
-          ):(
+              <Link className="mx-2" to="/profile">
+                {currentUser.displayName}
+              </Link>
+              <Link className="mx-2" to="/" onClick={signOutUser}>
+                Logout
+              </Link>
+            </NavItem>
+          ) : (
             <NavItem className="midleware">
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/signup">
-              Signup
-            </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to="/login">
-              Login
-            </Link>
-          </NavItem>
+              <Link className="mx-2" to="/signup">
+                Signup
+              </Link>
+              <Link className="mx-2" to="/login">
+                Login
+              </Link>
+            </NavItem>
           )}
         </Nav>
       </Navbar>
