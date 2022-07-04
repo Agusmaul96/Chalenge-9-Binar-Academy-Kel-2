@@ -13,7 +13,7 @@ const GameList = (props) => {
         <div class="gamelist">
           <button
             class="gameone"
-            onClick={() => navigate("/game-list/game")}
+            onClick={() => navigate("/gamelist/game")}
           ></button>
           <button class="gametwo">GAME 2</button>
           <button class="gamethree">GAME 3</button>

@@ -21,7 +21,7 @@ function Navigation() {
             <Link className="mx-2" to="/">
               Home
             </Link>
-            <Link className="mx-2" to="/game-list">
+            <Link className="mx-2" to="/gamelist">
               Game List
             </Link>
           </NavItem>
