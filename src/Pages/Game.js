@@ -60,22 +60,12 @@ const Game = ({ score, playerChoice, setScore }) => {
         <div className="game">
           <div className="game__player">
             <span className="p__sansserif">you picked</span>
-            <div
-              className={`image image__${playerChoice} ${
-                playerWin === "win"
-                  ? `image image__${playerChoice}__winner`
-                  : ""
-              }`}
-            ></div>
+            <div className={`image image__${playerChoice} ${playerWin === "win" ? `image image__${playerChoice}__winner` : ""}`}></div>
           </div>
           {playerWin === "win" && (
             <div className="game__play">
               <span className="p__sansserif">you win</span>
-              <Link
-                to="/game-list/game"
-                className="play-again"
-                onClick={() => setCom()}
-              >
+              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
                 Play Again
               </Link>
             </div>
@@ -83,11 +73,7 @@ const Game = ({ score, playerChoice, setScore }) => {
           {playerWin === "lose" && (
             <div className="game__play">
               <span className="p__sansserif">you lose</span>
-              <Link
-                to="/game-list/game"
-                className="play-again"
-                onClick={() => setCom()}
-              >
+              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
                 Play Again
               </Link>
             </div>
@@ -95,11 +81,7 @@ const Game = ({ score, playerChoice, setScore }) => {
           {playerWin === "draw" && (
             <div className="game__play">
               <span className="p__sansserif">draw</span>
-              <Link
-                to="/game-list/game"
-                className="play-again"
-                onClick={() => setCom()}
-              >
+              <Link to="/startgame" className="play-again" onClick={() => setCom()}>
                 Play Again
               </Link>
             </div>
@@ -107,15 +89,7 @@ const Game = ({ score, playerChoice, setScore }) => {
 
           <div className="game__com">
             <span className="p__sansserif">the com picked</span>
-            {counter === 0 ? (
-              <div
-                className={`image image__${com} ${
-                  playerWin === "lose" ? `image image__${com}__winner` : ""
-                }`}
-              ></div>
-            ) : (
-              <div className="counter">{counter}</div>
-            )}
+            {counter === 0 ? <div className={`image image__${com} ${playerWin === "lose" ? `image image__${com}__winner` : ""}`}></div> : <div className="counter">{counter}</div>}
           </div>
         </div>
       </div>

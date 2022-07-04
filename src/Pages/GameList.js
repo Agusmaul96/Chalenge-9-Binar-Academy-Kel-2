@@ -11,10 +11,7 @@ const GameList = (props) => {
       <div class="gamepage">
         <h1 class="listext">GAME LIST</h1>
         <div class="gamelist">
-          <button
-            class="gameone"
-            onClick={() => navigate("/game-list/game")}
-          ></button>
+          <button class="gameone" onClick={() => navigate("/gamelist/game")}></button>
           <button class="gametwo">GAME 2</button>
           <button class="gamethree">GAME 3</button>
         </div>

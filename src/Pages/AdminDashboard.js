@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style/admindashboard.css";
 import { Button, ButtonGroup } from "reactstrap";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function AdminDashboard(props) {
-
- 
-const navigate=useNavigate()
-const toForm=(key,data)=>{
-  data["uuid"]=key;
-  navigate('/edit',{state:data})
-}
+  const navigate = useNavigate();
+  const toForm = (key, data) => {
+    data["uuid"] = key;
+    navigate("/edit", { state: data });
+  };
   return (
     <div className="table">
       <table>
@@ -38,22 +36,11 @@ const toForm=(key,data)=>{
               <td>{props.data[key].sosmed}</td>
               <td>
                 <ButtonGroup>
+                  <Button outline color="warning" size="sm" onClick={() => toForm(key, props.data[key])}>
+                    EDIT
+                  </Button>
 
-                    <Button
-                      outline
-                      color="warning"
-                      size="sm"
-                      onClick={() => toForm(key,props.data[key])}
-                    >
-                      EDIT
-                    </Button>
-                  
-                  <Button
-                    outline
-                    color="danger"
-                    size="sm"
-                    onClick={() => props.onDelete(key)}
-                  >
+                  <Button outline color="danger" size="sm" onClick={() => props.onDelete(key)}>
                     DELETE
                   </Button>
                 </ButtonGroup>
