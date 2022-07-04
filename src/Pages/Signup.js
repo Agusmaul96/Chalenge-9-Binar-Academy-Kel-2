@@ -16,13 +16,15 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-      const userId = userCredential.user.uid;
-      writeUserData(email, password, username, userId);
-      updateProfile(userCredential.user, { displayName: username });
-      alert("Registrasi berhasil...");
-      navigate("/login");
-    });
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential)=>{
+      const userId = userCredential.user.uid
+      writeUserData(email, password, username,userId);
+      updateProfile(userCredential.user, {displayName: username})
+      alert("Registrasi berhasil...")
+      navigate("/login")
+    })
+
   };
 
   function writeUserData(email, password, username, userId) {
