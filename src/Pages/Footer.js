@@ -1,24 +1,27 @@
 import React, { useContext } from "react";
 import { UserContext } from "../contexts/userContext";
-import './style/footer.css';
+import style from "./style/Footer.module.css";
 
 function Footer(props) {
-    const { currentUser } = useContext(UserContext);
-    return (
-        <>
-            <div className="app__container">
-                <div className="footer">
-                    <div className="button-score"> <button
-                        type="submit"
-                        className="btn btn-warning"
-                        onClick={() => props.handleSubmit(currentUser.uid)}>
-                        save score
-                    </button>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-};
+  const { currentUser } = useContext(UserContext);
+  return (
+    <>
+      <div className={style["app__container"]}>
+        <div className={style.footer}>
+          <div className={style["button-score"]}>
+            {" "}
+            <button
+              type="submit"
+              className={style.btn}
+              onClick={() => props.handleSubmit(currentUser.uid)}
+            >
+              save score
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
 
 export default Footer;
