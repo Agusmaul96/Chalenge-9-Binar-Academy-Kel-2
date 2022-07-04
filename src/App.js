@@ -1,39 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { UserProvider } from "./contexts/userContext";
-import firebase from "./services/firebase";
-import {
-  getDatabase,
-  ref,
-  child,
-  get,
-  remove,
-  update,
-} from "firebase/database";
-
 import "./App.css";
 import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
+import Work from "./Pages/Work";
 import GameList from "./Pages/GameList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
+import Contact from "./Pages/Contact";
+import About from "./Pages/About";
+import ProfilePage from "./Pages/ProfilePage";
+import Play from "./Pages/Play";
 import Game from "./Pages/Game";
+import Header from "./Pages/Header";
+import firebase from "./services/firebase";
+import AdminDashboard from "./Pages/AdminDashboard";
+import { getDatabase, ref, child, get, remove, update } from "firebase/database";
+import Navigation from "./components/Navigation";
+import EditForm from "./Pages/EditForm";
+import { UserProvider } from "./contexts/userContext";
+import IsUser from "./middlewares/IsUser"
+import IsAdmin from "./middlewares/IsAdmin"
 import Footer from "./Pages/Footer";
 
-// import ProfilePage from "./Pages/ProfilePage";
-// import Play from "./Pages/Play";
-// import Header from "./Pages/Header";
-// import AdminDashboard from "./Pages/AdminDashboard";
-// import Navigation from "./components/Navigation";
-// import EditForm from "./Pages/EditForm";
-// import IsUser from "./middlewares/IsUser";
-// import IsAdmin from "./middlewares/IsAdmin";
-
-const App = (props) => {
-  const [playerChoice, setPlayerChoice] = useState("");
+function App() {
+  const [playerChoice, setplayerChoice] = useState("");
   const [score, setScore] = useState(0);
 
   const [playerData, setPlayerData] = useState([]);
   const [del, setDel] = useState(false);
+
 
   useEffect(() => {
     fetchUser();
@@ -65,14 +60,16 @@ const App = (props) => {
       .catch((error) => {
         console.error(error);
       });
+
   }, []);
+
 
   const HandleSubmit = (uuid) => {
     const dbRef = ref(getDatabase());
     update(child(dbRef, `users/${uuid}`), {
-      total_score: score,
+      total_score: score
     });
-  };
+  }
 
   return (
     <>
@@ -80,29 +77,30 @@ const App = (props) => {
         <UserProvider>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/game-list" element={<GameList />} />
-            <Route
-              path="game-list/game"
-              element={
-                <>
-                  <Game
-                    playerChoice={playerChoice}
-                    score={score}
-                    setScore={setScore}
-                  />
-                  <Footer handleSubmit={HandleSubmit} />
-                </>
-              }
-            />
+            <Route path="home" element={<Home />} />
+            <Route path="home/login" element={<Login />} />
+            <Route path="work" element={<Work />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+            <Route path="gamelist" element={<GameList />} />
+            <Route path="gamelist/game" element={
+              <>
+                <Game
+                  playerChoice={playerChoice}
+                  score={score}
+                  setScore={setScore} />
+                <Footer handleSubmit={HandleSubmit} />
+              </>
 
-            {/* <Route path="profile" element={
+            } />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="profile" element={
               <IsUser>
                 <ProfilePage />
               </IsUser>
-            } /> */}
-            {/* <Route path="startgame" element={
+            } />
+            <Route path="startgame" element={
               <>
                 <Play
                   setplayerChoice={setplayerChoice}
@@ -111,8 +109,8 @@ const App = (props) => {
                 />
                 <Footer handleSubmit={HandleSubmit} />
               </>
-            } /> */}
-            {/* <Route
+            } />
+            <Route
               path="game"
               element={
                 <>
@@ -123,8 +121,8 @@ const App = (props) => {
                   />
                   <Footer handleSubmit={HandleSubmit} />
                 </>
-              } /> */}
-            {/* <Route
+              } />
+            <Route
               path="admin"
               element={
                 <IsAdmin>
@@ -136,13 +134,13 @@ const App = (props) => {
                   </>
                 </IsAdmin>
               }
-            /> */}
-            {/* <Route path="edit" element={<EditForm />} /> */}
+            />
+            <Route path="edit" element={<EditForm />} />
           </Routes>
         </UserProvider>
       </Router>
     </>
   );
-};
+}
 
 export default App;
