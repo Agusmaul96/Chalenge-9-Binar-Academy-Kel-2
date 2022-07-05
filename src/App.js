@@ -11,25 +11,19 @@ import About from "./Pages/About";
 import ProfilePage from "./Pages/ProfilePage";
 import Play from "./Pages/Play";
 import Game from "./Pages/Game";
-import Header from "./Pages/Header";
-import firebase from "./services/firebase";
 import AdminDashboard from "./Pages/AdminDashboard";
 import { getDatabase, ref, child, get, remove, update } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
 import { UserProvider } from "./contexts/userContext";
-<<<<<<< HEAD
 
 import IsUser from "./middlewares/IsUser";
 import IsAdmin from "./middlewares/IsAdmin";
 import Footer from "./Pages/Footer";
 
-=======
-import IsUser from "./middlewares/IsUser"
-import IsAdmin from "./middlewares/IsAdmin"
-import Footer from "./Pages/Footer";
+import { Toast, ToastBody, ToastHeader } from "reactstrap";
+import { useSelector } from "react-redux";
 
->>>>>>> 90627263499330bdc4fa644cd1c40d721a605d97
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
   const [score, setScore] = useState(0);
@@ -37,6 +31,23 @@ function App() {
   const [playerData, setPlayerData] = useState([]);
   const [del, setDel] = useState(false);
 
+  const toast = useSelector((state) => state.user.toast);
+
+  const style = {
+    position: 'absolute',
+    top: '10.4rem',
+    right: '49rem',
+    zIndex: '5',
+
+  }
+
+  const successAlert = () =>
+    toast.message && (
+      <Toast style={style}>
+        <ToastHeader className={`bg-${toast.type} text-light`}>{toast.type}</ToastHeader>
+        <ToastBody>{toast.message}</ToastBody>
+      </Toast>
+    );
 
   useEffect(() => {
     fetchUser();
@@ -81,6 +92,7 @@ function App() {
 
   return (
     <>
+      {successAlert()}
       <Router>
         <UserProvider>
           <Routes>
@@ -127,13 +139,9 @@ function App() {
                   <Game playerChoice={playerChoice} score={score} setScore={setScore} />
                   <Footer handleSubmit={HandleSubmit} />
                 </>
-<<<<<<< HEAD
               }
             />
 
-=======
-              } />
->>>>>>> 90627263499330bdc4fa644cd1c40d721a605d97
             <Route
               path="admin"
               element={

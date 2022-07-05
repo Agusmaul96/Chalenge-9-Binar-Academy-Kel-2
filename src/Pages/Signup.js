@@ -3,38 +3,62 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "../components/Navigation";
 
 import React, { useState } from "react";
-
+import { Spinner } from "reactstrap";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  showErrorToast,
+  showSuccessAlert,
+  setLoading,
+  setProfile,
+} from "../store/reducer/userSlice";
 
-const Signup = () => {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
+
+  const isLoading = useSelector((state) => state.user.isLoading);
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(setLoading(true));
+
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential)=>{
-      const userId = userCredential.user.uid
-      writeUserData(email, password, username,userId);
+      const { email, password, username, userId } = userCredential.user;
+      const profile = {
+        name: username,
+        email: email,
+        password: password,
+        id: userId,
+      };
+      dispatch(setProfile(profile));
+      dispatch(setLoading(false));
       updateProfile(userCredential.user, {displayName: username})
-      alert("Registrasi berhasil...")
-      navigate("/login")
+      dispatch(showSuccessAlert(`Success Login with ${email}`));
+      navigate("/");
     })
-
+      .catch((error) => {
+        dispatch(setLoading(false));
+        dispatch(showErrorToast(error.code));
+      });
   };
 
-  function writeUserData(email, password, username, userId) {
-    const db = getDatabase();
-    set(ref(db, "users/" + userId), {
-      email: email,
-      password: password,
-      username: username,
-    });
-  }
+  const loading = () => {
+    return (
+      isLoading && (
+        <Spinner size="sm" className="me-2">
+          Loading....
+        </Spinner>
+      )
+    );
+  };
+
   return (
     <div class="body">
       <Navigation />
@@ -70,6 +94,7 @@ const Signup = () => {
 
               <div class="row">
                 <button type="submit" class="btn btn-primary text-right float-end mb-3">
+                  {loading()}
                   Submit
                 </button>
               </div>
@@ -86,4 +111,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+
