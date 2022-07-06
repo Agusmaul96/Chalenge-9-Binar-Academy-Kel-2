@@ -29,6 +29,7 @@ export const auth = getAuth();
 
 export const signOutUser = async () => {
   await signOut(auth);
+  console.log("logout")
   
 };
 

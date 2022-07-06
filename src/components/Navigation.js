@@ -2,12 +2,21 @@ import { Link } from "react-router-dom";
 import { Navbar, Nav, NavbarBrand, NavItem } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navigation.css";
-import React,{useContext} from "react";
-import {UserContext} from "../contexts/userContext"
+import React from "react";
 import {signOutUser} from "../services/firebase"
+import { useSelector,useDispatch } from "react-redux";
+import {selectUser} from "../features/userSlice"
+import {logout } from "../features/userSlice"
 
 function Navigation() {
-  const {currentUser}=useContext(UserContext)
+  const currentUser=useSelector(selectUser)
+  const dispatch = useDispatch()
+  const signOutHandle=(e)=>{
+    e.preventDefault();
+    signOutUser()
+    dispatch(logout())
+    console.log("logout")
+  }
   return (
     <div class="">
       <Navbar color="dark" expand="md" fixed="top">
@@ -38,7 +47,7 @@ function Navigation() {
             <Link style={{ textDecoration: "none" }} className="mx-2" to="/profile">
             {currentUser.displayName}
             </Link>
-            <Link style={{ textDecoration: "none" }} className="mx-2" to ="/" onClick={signOutUser}>
+            <Link style={{ textDecoration: "none" }} className="mx-2" to ="/" onClick={signOutHandle}>
               Logout
             </Link>
           </NavItem>

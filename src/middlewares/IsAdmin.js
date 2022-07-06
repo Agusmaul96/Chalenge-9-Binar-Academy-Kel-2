@@ -1,11 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
+import { useSelector } from "react-redux";
+import {selectUser} from "../features/userSlice"
 
 function IsAdmin(props) {
   const navigate = useNavigate();
+  const currentUser=useSelector(selectUser)
 
-  const { currentUser } = useContext(UserContext);
   if (!currentUser || currentUser.uid !=="TO6H8ieUTaasShf9toInVH4kuD82") {
     navigate("/");
     

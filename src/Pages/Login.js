@@ -4,22 +4,28 @@ import Navigation from "../components/Navigation";
 import React, { useState,useContext } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import {useDispatch} from "react-redux";
+import { login} from "../features/userSlice";
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispacth = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault();
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-        navigate("/gamelist");
+        console.log(userCredential)
+        dispacth(login({
+          uid:userCredential.user.uid,
+          displayName: userCredential.user.displayName,
+          accessToken: userCredential.user.accessToken,
+        }))
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -30,47 +36,47 @@ const Login = () => {
       });
   };
   return (
-    <div class="body">
+    <div className="body">
       <Navigation />
-      <div class="row">
-        <div class="col-lg-6 col-sm-12 m-auto">
-          <div class="card p-5">
-            <h1 class="mb-5">Login</h1>
+      <div className="row">
+        <div className="col-lg-6 col-sm-12 m-auto">
+          <div className="card p-5">
+            <h1 className="mb-5">Login</h1>
 
 
-            <form onSubmit={handleSubmit} class="row g-3">
+            <form onSubmit={handleSubmit} className="row g-3">
 
-              <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-4 col-form-label">
+              <div className="mb-3 row">
+                <label for="staticEmail" className="col-sm-4 col-form-label">
                   {" "}
                   Email{" "}
                 </label>
 
-                <div class="col-sm-8">
+                <div className="col-sm-8">
 
-                  <input type="email" name="uEmail" class="form-control" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <input type="email" name="uEmail" className="form-control" placeholder="example@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)} />
 
                 </div>
               </div>
 
-              <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-4 col-form-label">
+              <div className="mb-3 row">
+                <label for="inputPassword" className="col-sm-4 col-form-label">
                   {" "}
                   Password{" "}
                 </label>
 
-                <div class="col-sm-8">
+                <div className="col-sm-8">
 
-                  <input type="password" name="uPassword" class="form-control" placeholder="12345678" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <input type="password" name="uPassword" className="form-control" placeholder="12345678" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
               </div>
 
-              <div class="row m-auto">
-                <button type="submit" class="btn btn-primary text-right float-end mb-3">
+              <div className="row m-auto">
+                <button type="submit" className="btn btn-primary text-right float-end mb-3">
                   Login
                 </button>
               </div>
-              <div class="row m-auto">
+              <div className="row m-auto">
                 <h6>
                   Belum Punya Akun? <a href="/signup">Daftar Sekarang</a>
                 </h6>

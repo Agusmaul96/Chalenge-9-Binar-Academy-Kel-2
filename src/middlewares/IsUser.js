@@ -1,11 +1,11 @@
-import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/userContext";
+import { useSelector } from "react-redux";
+import {selectUser} from "../features/userSlice"
+
 
 function IsUser(props) {
+  const currentUser=useSelector(selectUser)
   const navigate = useNavigate();
-
-  const { currentUser } = useContext(UserContext);
   if (!currentUser) {
 
     navigate("/login");

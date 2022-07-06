@@ -1,18 +1,19 @@
-import React, { useState,useEffect,useContext } from "react";
+import React, { useState,useEffect} from "react";
 import "./style/profile.css";
 import {child, get, set} from "firebase/database";
-import {UserContext} from "../contexts/userContext"
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {Row,Col, Card, CardHeader,CardBody,Button,Input,InputGroup} from "reactstrap"
-import {dbRef,storage} from "../services/firebase"
+import {Row, Card, CardHeader,CardBody,Button,Input,InputGroup} from "reactstrap"
+import {dbRef} from "../services/firebase"
 import { updatePassword, updateProfile,updateEmail } from "firebase/auth";
 import {auth} from "../services/firebase"
 import { ref, uploadBytes } from "firebase/storage";
+import { useSelector} from "react-redux";
+import {selectUser} from "../features/userSlice"
 
 
 
 function ProfilePage() {
-  const {currentUser}= useContext(UserContext)
+  const currentUser =useSelector(selectUser)
   const [name, SetName] = useState("Your Program");
   const [email, SetEmail] = useState("Your Program");
   const [score, SetScore] = useState("Your Score");
@@ -34,10 +35,10 @@ function ProfilePage() {
 
   useEffect(() => {
     if (currentUser) fetchUser();
-  }, [currentUser]);
+  }, []);
   
   const fetchUser = () => {
-    setUserId(currentUser.uid)
+    console.log("fetch user",currentUser.uid)
     get(child(dbRef, `/users/${currentUser.uid}`))
     .then((snapshot) => {
       console.log(snapshot.val())

@@ -16,9 +16,14 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import { getDatabase, ref, child, get, remove } from "firebase/database";
 import Navigation from "./components/Navigation";
 import EditForm from "./Pages/EditForm";
-import { UserProvider } from "./contexts/userContext";
 import IsUser from "./middlewares/IsUser"
 import IsAdmin from "./middlewares/IsAdmin"
+import { PersistGate } from 'redux-persist/integration/react'
+
+import { Provider } from 'react-redux';
+import {store,persistor} from './store';
+
+
 
 function App() {
   const [playerChoice, setplayerChoice] = useState("");
@@ -51,7 +56,8 @@ function App() {
   return (
     <>
       <Router>
-        <UserProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -83,7 +89,8 @@ function App() {
           />
           <Route path="edit" element={<EditForm />} />
         </Routes>
-        </UserProvider>
+        </PersistGate>
+        </Provider>
       </Router>
     </>
   );
